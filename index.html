@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-gray-50 dark:bg-gray-900">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gemini Chat</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="h-full transition-colors duration-300">
+
+  <div class="flex h-screen max-h-screen">
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="w-64 md:w-72 bg-white dark:bg-gray-800 shadow-lg flex flex-col z-10 transform transition-transform duration-300 ease-in-out lg:translate-x-0 -translate-x-full">
+      <div class="p-4 border-b dark:border-gray-700 flex justify-between items-center">
+        <h1 class="text-xl font-bold text-gray-800 dark:text-white">Gemini Chat</h1>
+        <button id="themeToggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200">
+          <i class="fa-solid fa-moon dark:hidden"></i>
+          <i class="fa-solid fa-sun hidden dark:block"></i>
+        </button>
+      </div>
+
+      <div class="p-3">
+        <button id="newChat" class="w-full mb-3 flex items-center justify-center px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition duration-200 shadow">
+          <i class="fas fa-plus mr-2"></i> New Chat
+        </button>
+      </div>
+
+      <div id="conversationList" class="flex-1 overflow-y-auto px-2 space-y-1">
+        <!-- Conversations will be inserted here -->
+      </div>
+
+      <div class="p-3 border-t dark:border-gray-700 text-xs text-gray-500 dark:text-gray-400">
+        © 2025 Gemini AI Chat
+      </div>
+    </aside>
+
+    <!-- Main Chat Area -->
+    <main class="flex-1 flex flex-col bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+
+      <!-- Mobile Header -->
+      <div class="lg:hidden bg-white dark:bg-gray-800 p-3 shadow-sm flex items-center">
+        <button id="menuToggle" class="mr-3 text-gray-700 dark:text-gray-300">
+          <i class="fas fa-bars text-xl"></i>
+        </button>
+        <h2 class="text-lg font-semibold text-gray-800 dark:text-white">Chat</h2>
+      </div>
+
+      <!-- Chat Messages -->
+      <div id="chatArea" class="flex-1 overflow-y-auto p-4 space-y-6 scroll-smooth">
+        <!-- Messages will appear here -->
+        <div class="flex justify-center">
+          <div class="max-w-2xl text-center">
+            <i class="fas fa-robot text-6xl text-indigo-500 mb-4"></i>
+            <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-2">Gemini Assistant</h2>
+            <p class="text-gray-600 dark:text-gray-300">Ask me anything!</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Input Box -->
+      <div class="p-4 bg-white dark:bg-gray-800 border-t dark:border-gray-700">
+        <form id="messageForm" class="flex gap-2 max-w-4xl mx-auto">
+          <input
+            type="text"
+            id="messageInput"
+            placeholder="Type a message..."
+            class="flex-1 p-3 border dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-white"
+            autocomplete="off"
+            required
+          />
+          <button
+            type="submit"
+            class="p-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          >
+            <i class="fas fa-paper-plane"></i>
+          </button>
+        </form>
+      </div>
+    </main>
+  </div>
+
+  <!-- Floating Alert -->
+  <div id="rateLimitAlert" class="hidden fixed bottom-5 right-5 bg-red-600 text-white px-6 py-3 rounded-lg shadow-lg z-50 transition-opacity duration-300">
+    API limit reached. Please try again later.
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
