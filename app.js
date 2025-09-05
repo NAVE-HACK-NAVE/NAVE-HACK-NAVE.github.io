@@ -2,7 +2,7 @@
 
 class GeminiChatApp {
   constructor() {
-    this.apiKey = 'AIzaSyDrIXxX1KxARUksyJ4Q0oXRApDnlRiFZnA'; // ← Replace with your actual Gemini API key
+    this.apiKey = 'AIzaSyA8aigPTXJhNbcPBgXe4Uqy59So9hiJeiU'; // ← Replace with your actual Gemini API key
     this.apiUrl = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent';
     
     this.conversations = JSON.parse(localStorage.getItem('geminiConversations')) || [];
